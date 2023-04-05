@@ -14,6 +14,7 @@ import PrivateRoute from 'app/shared/auth/private-route';
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
+import CustomerManagement from 'app/modules/customer/customerManagement';
 
 const loading = <div>loading ...</div>;
 
@@ -66,6 +67,7 @@ const AppRoutes = () => {
             </PrivateRoute>
           }
         />
+        <Route path="customer" element={<CustomerManagement />} />
         <Route path="*" element={<PageNotFound />} />
       </ErrorBoundaryRoutes>
     </div>
