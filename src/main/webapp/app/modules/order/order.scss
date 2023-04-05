@@ -1,0 +1,21 @@
+.place-order-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+
+  .order-form {
+    margin-top: 20px;
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+}

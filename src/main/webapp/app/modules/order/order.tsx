@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal, Table } from 'react-bootstrap';
+import './order.scss';
 
 interface Product {
   id: number;
