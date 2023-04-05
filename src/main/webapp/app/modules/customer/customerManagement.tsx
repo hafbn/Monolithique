@@ -17,15 +17,53 @@ const CustomerManagement: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleAddSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newCustomer = { id: customers.length + 1, name, email, phone };
+  const handleAddSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Check if name already exists
+    const nameExists = customers.some(customer => customer.name === name);
+    if (nameExists) {
+      alert('This name already exists');
+      return;
+    }
+
+    // Check if mail already exists
+    const mailExists = customers.some(customer => customer.email === email);
+    if (mailExists) {
+      alert('This mail already exists');
+      return;
+    }
+
+    const newCustomer: Customer = {
+      id: customers.length + 1,
+      name: name,
+      email: email,
+      phone: phone,
+    };
     setCustomers([...customers, newCustomer]);
+    setName('');
+    setEmail('');
+    setPhone('');
     setShowAddModal(false);
   };
 
   const handleEditSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if name already exists
+    const nameExists = customers.some(customer => customer.name === name);
+    if (nameExists) {
+      alert('This name already exists');
+      return;
+    }
+
+    // Check if mail already exists
+    const mailExists = customers.some(customer => customer.email === email);
+    if (mailExists) {
+      alert('This mail already exists');
+      return;
+    }
+
     if (!customerToEdit) return;
     const updatedCustomer = { ...customerToEdit, name, email, phone };
     const index = customers.findIndex(c => c.id === customerToEdit.id);
