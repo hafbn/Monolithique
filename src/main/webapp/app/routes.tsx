@@ -15,6 +15,7 @@ import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 import PageNotFound from 'app/shared/error/page-not-found';
 import { AUTHORITIES } from 'app/config/constants';
 import CustomerManagement from 'app/modules/customer/customerManagement';
+import Order from 'app/modules/order/order';
 
 const loading = <div>loading ...</div>;
 
@@ -68,6 +69,7 @@ const AppRoutes = () => {
           }
         />
         <Route path="customer" element={<CustomerManagement />} />
+        <Route path="order" element={<Order />} />
         <Route path="*" element={<PageNotFound />} />
       </ErrorBoundaryRoutes>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 interface Customer {
   id: number;
@@ -123,6 +124,10 @@ const CustomerManagement: React.FC = () => {
       <Button variant="success" onClick={() => setShowAddModal(true)}>
         Add Customer
       </Button>
+
+      <Link to="/order">
+        <Button variant="primary">Place Order</Button>
+      </Link>
 
       <Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
         <Modal.Header closeButton>
