@@ -47,7 +47,7 @@ interface IAuthParams {
 
 export const authenticate = createAsyncThunk(
   'authentication/login',
-  async (auth: IAuthParams) => axios.post<any>('api/authenticate', auth),
+  async (auth: IAuthParams) => axios.post<any>('/api/authenticate', auth),
   {
     serializeError: serializeAxiosError,
   }
