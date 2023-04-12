@@ -125,7 +125,7 @@ const CustomerManagement: React.FC = () => {
         Add Customer
       </Button>
 
-      <Link to="/order">
+      <Link to="/product">
         <Button variant="primary">Place Order</Button>
       </Link>
 

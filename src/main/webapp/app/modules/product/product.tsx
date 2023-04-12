@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Modal, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 interface Product {
   id: number;
@@ -12,9 +13,14 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 1, name: 'Product 1', description: 'This is product 1', price: 10.99, category: 'Category 1' },
-  { id: 2, name: 'Product 2', description: 'This is product 2', price: 19.99, category: 'Category 2' },
-  { id: 3, name: 'Product 3', description: 'This is product 3', price: 5.99, category: 'Category 1' },
+  { id: 1, name: 'T-shirt', description: 'This is a pink t-shirt', price: 10.99, category: 'Top' },
+  { id: 2, name: 'Chemise', description: 'This is a white chemise', price: 19.99, category: 'Top' },
+  { id: 3, name: 'Joggers', description: 'This is a type of pants', price: 5.99, category: 'Bottom' },
+  { id: 4, name: 'Mini skirt', description: 'This is a type of skirt', price: 5.99, category: 'Bottom' },
+  { id: 5, name: 'Ring', description: 'This is a type of accessory', price: 5.99, category: 'Accessory' },
+  { id: 6, name: 'Earrings', description: 'This is a type of accessory', price: 5.99, category: 'Accessory' },
+  { id: 7, name: 'Chanel', description: 'This is a type of bag', price: 955.99, category: 'Accessory' },
+  { id: 8, name: 'Nike', description: 'Nike Air Force 1', price: 155.99, category: 'Shoes' },
 ];
 
 const ProductList: React.FC = () => {
@@ -50,17 +56,25 @@ const ProductList: React.FC = () => {
 
   return (
     <div>
+      {/* <div  style={{ position: 'fixed', left: 0 }}>
+        <Sidebar/>
+      </div> */}
       <h1>Our products</h1>
       <div>
-        <label htmlFor="category-filter">Filter by category:</label>
-        <select id="category-filter" value={categoryFilter} onChange={handleCategoryFilterChange}>
-          <option value="">All categories</option>
-          <option value="Category 1">Category 1</option>
-          <option value="Category 2">Category 2</option>
-        </select>
+        <Form>
+          <Form.Group controlId="category-filter">
+            <Form.Select id="category-filter" value={categoryFilter} onChange={handleCategoryFilterChange}>
+              <option value="">All categories</option>
+              <option value="Top">Top</option>
+              <option value="Bottom">Bottom</option>
+              <option value="Accessory">Accessory</option>
+              <option value="Shoes">Shoes</option>
+            </Form.Select>
+          </Form.Group>
+        </Form>
       </div>
       <form onSubmit={handleOrderSubmit}>
-        <Table striped bordered hover>
+        <Table className="mt-3" striped bordered hover>
           <thead>
             <tr>
               <th>Select</th>
@@ -86,7 +100,7 @@ const ProductList: React.FC = () => {
             ))}
           </tbody>
         </Table>
-        <button type="submit">Place Order</button>
+        <Button type="submit">Place Order</Button>
       </form>
 
       {showOrderSummary && (
